@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class People {
-    private List<Person> peopleList = new ArrayList<>();
+    private final List<Person> peopleList = new ArrayList<>();
 
     public Person add(long id, String name) {
         Person personToAdd = new Person(id, name);
@@ -31,5 +31,37 @@ public class People {
         }
         return false;
     }
+
+    public boolean removeByName(Person person) {
+        for (Person person1 : peopleList) {
+            if (person1.equals(person)) {
+                peopleList.remove(person);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean removeById(Long id) {
+        for (Person person1 : peopleList) {
+            if (id.equals(person1.getId())) {
+                peopleList.remove(person1);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean removeAll() {
+        for (Person person1 : peopleList) {
+            for (int i = 0; i < peopleList.size(); i++) {
+                peopleList.remove(person1);
+            }
+            return true;
+        }
+        return false;
+    }
+
     
+
 }
